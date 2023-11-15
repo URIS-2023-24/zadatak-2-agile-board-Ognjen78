@@ -42,11 +42,11 @@
                                         {{task.assignee}}
                                       </td>
                                       <td>
-                                        <button mat-raised-button type="submit" class="btn btn-white btn-round btn-just-icon" (click)="editTask(task)">
+                                        <button mat-raised-button type="submit" class="btn btn-white btn-round btn-just-icon" (click)="openDialog(task)">
                                             <i class="material-icons">edit</i>
                                             <div class="ripple-container"></div>
                                           </button>
-                                          <button mat-raised-button type="submit" class="btn btn-white btn-round btn-just-icon" (click)="deleteTask(task.id)">
+                                          <button mat-raised-button type="submit" class="btn btn-white btn-round btn-just-icon" (click)="deleteTask(task)">
                                             <i class="material-icons">delete</i>
                                             <div class="ripple-container"></div>
                                           </button>

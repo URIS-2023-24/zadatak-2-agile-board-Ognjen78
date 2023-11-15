@@ -34,13 +34,25 @@ export class TableListComponent implements OnInit {
     });
   }
 
-  deleteTask(id: number){
-    const index = this.tasks.findIndex( (obj: Task) => obj.id == id);
+  deleteTask(e: Task){
+    const index = this.tasks.findIndex( (obj: Task) => obj.id == e.id);
     this.tasks.splice(index, 1);
   }
 
-  editTask(task: Task){
-      const dialog = this.dialog.open(TableListDialogComponent, {width: "600px", data: {title: task.title, description: task.description, assignee: task.assignee}})
+  openDialog(e: Task){
+      const dialog = this.dialog.open(TableListDialogComponent, 
+        {width: "600px",
+         data: {title: e.title, description: e.description, assignee: e.assignee}
+        });
+
+        dialog.afterClosed().subscribe(res => {
+          if(res){
+            const taskIndex = this.tasks.findIndex((obj : Task) => obj.id == e.id);
+            this.tasks[taskIndex].title = res.title;
+            this.tasks[taskIndex].description = res.description;
+            this.tasks[taskIndex].assignee = res.assignee;
+          }
+        })
   }
 
   
